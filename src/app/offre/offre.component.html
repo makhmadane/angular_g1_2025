@@ -1,0 +1,22 @@
+<div class="container">
+    <button class="btn btn-success" routerLink="/addOffre">Add</button>
+    <table class="table table-bordered">
+     <tr>
+        <th>Title</th>
+        <th>Lieu</th>
+        <th>Date</th>
+        <th>Options</th>
+    </tr>
+    <tr *ngFor ="let o of offres">
+        <td>{{o.title | uppercase}}</td>
+        <td>{{o.lieu}}</td>
+        <td>{{o.date}}</td>
+        <td>
+            <button class="btn btn-danger" (click)="deleteOffre(o.id)">Supprimer</button>
+            <button class="btn btn-danger" routerLink="/updateOffre/{{o.id}}">Modifier</button>
+        </td>
+    </tr>
+</table>
+
+
+</div>

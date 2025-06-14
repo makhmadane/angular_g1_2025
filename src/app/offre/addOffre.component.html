@@ -1,0 +1,26 @@
+<form [formGroup]="offreForm" (ngSubmit)="saveOffre()">
+    <label for="">Title</label>
+    <input type="text" class="form-control" formControlName="title">
+    <div *ngIf="submitted && f2.title.errors">
+        <span class="text-danger" *ngIf="f2.title.errors['required']">*Title est obligatoire</span>
+    </div>
+    <label for="">Lieu</label>
+    <input type="text" class="form-control" formControlName="lieu">
+    <div *ngIf="submitted && f2.lieu.errors">
+        <span class="text-danger" *ngIf="f2.lieu.errors['required']">*Lieu est obligatoire</span>
+    </div>
+    <label for="">Date</label>
+    <input type="date" class="form-control" formControlName="date">
+    <div *ngIf="submitted && f2.date.errors">
+        <span class="text-danger" *ngIf="f2.date.errors['required']">*Date est obligatoire</span>
+    </div>
+    <label for="">Description</label>
+    <textarea name="" id="" formControlName="description" class="form-control">
+        <div *ngIf="submitted && f2.description.errors">
+        <span class="text-danger" *ngIf="f2.description.errors['required']">*Description est obligatoire</span>
+    </div>
+
+    </textarea>
+    <br>
+    <button type="submit" class="btn btn-primary">{{textButton}}</button>
+</form>
