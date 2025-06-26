@@ -1,6 +1,9 @@
-<p>user works!</p>
+<h2>Inscription</h2>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <input formControlName="name" placeholder="Nom complet" class="form-control">
+  <input formControlName="email" type="email" placeholder="Email" class="form-control">
+  <input formControlName="password" type="password" placeholder="Mot de passe" class="form-control">
+  <input formControlName="password_confirmation" type="password" placeholder="Confirmation mot de passe" class="form-control">
+  <button type="submit" class="btn btn-warning">S'inscrire</button>
+</form>
 
-
-<h2 *ngFor="let item of tab" >
-    <li>{{item}}</li>
-</h2>

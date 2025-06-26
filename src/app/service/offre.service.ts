@@ -1,32 +1,39 @@
 import { Injectable } from '@angular/core';
 import { Offre } from '../model/offre';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { AuthService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OffreService {
+
+  headers = new HttpHeaders({
+      "Authorization" : [ "Bearer " +this.authService.getToken() ]  
+  }
+
+  )
   API_URL = "http://127.0.0.1:8000/api/offre";
   offres : Offre[] = [];
-  constructor(private httpClient :HttpClient) { }
+  constructor(private httpClient :HttpClient, private authService : AuthService) { }
 
   getAllOffre(): Observable<Offre[]>{
-    return  this.httpClient.get<Offre[]>(this.API_URL);
+    return  this.httpClient.get<Offre[]>(this.API_URL , {headers :this.headers});
   }
 
   addOffre(offre:Offre): Observable<Offre>{
-    return  this.httpClient.post<Offre>(this.API_URL,offre);
+    return  this.httpClient.post<Offre>(this.API_URL,offre ,  {headers :this.headers} );
   }
 
   deleteOffre(id:number){
-   return  this.httpClient.delete(this.API_URL+'/'+id);
+   return  this.httpClient.delete(this.API_URL+'/'+id, {headers :this.headers});
   }
   
   getByIdOffre(id:number){
-   return this.httpClient.get<Offre>(this.API_URL+'/'+id);
+   return this.httpClient.get<Offre>(this.API_URL+'/'+id,{headers :this.headers});
   }
   updateOffre(offre: Offre){
-     return this.httpClient.put<Offre>(this.API_URL+'/'+offre.id,offre);
+     return this.httpClient.put<Offre>(this.API_URL+'/'+offre.id,offre, {headers :this.headers});
   }
 }
