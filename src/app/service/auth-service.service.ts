@@ -36,4 +36,7 @@ export class AuthService {
     return this.http.post(`${this.API_URL}/logout`, {});
   }
 
+  isLoggedIn(){
+    return !!this.getToken();
+  }
 }
