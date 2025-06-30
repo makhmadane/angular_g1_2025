@@ -8,7 +8,7 @@ import { LoginResp } from '../model/LoginResp';
 })
 export class AuthService {
 
-  API_URL = "http://127.0.0.1:8000/api";
+  API_URL = "https://7445-41-82-215-155.ngrok-free.app/api";
 
   constructor(private http: HttpClient) {}
 

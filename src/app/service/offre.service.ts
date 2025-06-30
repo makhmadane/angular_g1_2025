@@ -9,7 +9,7 @@ import { AuthService } from './auth-service.service';
 })
 export class OffreService {
 
-  API_URL = "http://127.0.0.1:8000/api/offre";
+  API_URL = "https://7445-41-82-215-155.ngrok-free.app/api/offre";
   offres : Offre[] = [];
   constructor(private httpClient :HttpClient, private authService : AuthService) { }
 
